@@ -29,6 +29,8 @@ export async function POST(request: Request) {
   }
 
   const response = {
+    phone: phoneNumber,
+    code: matchingCarrier.code,
     carrier: matchingCarrier.name,
     line_type: matchingPrefix.line_type,
     location: matchingPrefix.location,
