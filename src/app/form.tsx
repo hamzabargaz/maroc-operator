@@ -17,6 +17,7 @@ import { Location } from "@/assets/icons";
 import Image from "next/image";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { isEmpty } from "ramda";
+import { Skeleton } from "@/components/ui/skeleton";
 
 type Props = {};
 
@@ -40,7 +41,6 @@ export default function FormDetector({}: Props) {
   });
 
   const onSubmit = async (data: any) => {
-    console.log("data.phoneNumber ", data.phoneNumber);
     if (!data.phoneNumber) {
       return formProps.setError("phoneNumber", {
         type: "manual",
@@ -62,7 +62,7 @@ export default function FormDetector({}: Props) {
       formProps.reset();
       return formProps.setValue("results", json.body);
     } catch (err: any) {
-      formProps.setError("phoneNumber", {
+      return formProps.setError("phoneNumber", {
         type: "manual",
         message: err.message,
       });
@@ -70,8 +70,6 @@ export default function FormDetector({}: Props) {
   };
 
   const results = formProps.watch("results");
-  const errorsPhoneNumber = formProps.formState.errors?.phoneNumber?.message;
-  console.log("results ", results);
   return (
     <Form {...formProps}>
       <form
@@ -96,12 +94,9 @@ export default function FormDetector({}: Props) {
                       }
                       field.onChange(e);
                     }}
-
                     // {...field}
                   />
                 </FormControl>
-                {/* <FormDescription className='text-red-500'>
-                </FormDescription> */}
                 <FormMessage />
               </FormItem>
             )}
@@ -132,28 +127,39 @@ const Result = ({ results }: any) => {
       <div className='flex items-center w-1/2 gap-4'>
         <div className='w-1/3 grayscale'>
           <AspectRatio
-            className='mr-4 w-32 h-32 rounded-full border flex items-center justify-center p-4'
+            className='mr-4 w-32 h-32 rounded-full flex items-center justify-center p-4'
             ratio={16 / 16}
           >
-            <Image
-              src={carrierLogo[results?.code]}
-              alt='Image'
-              className='rounded-md object-cover'
-            />
+            <Skeleton
+              className='object-cover w-32 h-32 rounded-full'
+              cond={isEmpty(carrierLogo[results?.code])}
+            >
+              <Image
+                src={carrierLogo[results?.code]}
+                alt='Image'
+                className='object-cover'
+              />
+            </Skeleton>
           </AspectRatio>
         </div>
-        <div className='flex flex-col text-xl whitespace-nowrap flex-1 w-2/3 pl-10 gap-y-2'>
-          <div className='text-xl'> {phone} </div>
-          <div className='capitalize'>{`${results?.carrier} | ${results?.line_type}`}</div>
-          {results?.location && (
-            <div className='flex items-center'>
-              <div>
-                <Location className='w-6 h-6 mr-4' />
+        <Skeleton
+          count={3}
+          className='flex-1 mb-4 w-64 h-6'
+          cond={isEmpty(results?.carrier)}
+        >
+          <div className='flex flex-col text-xl whitespace-nowrap flex-1 w-2/3 pl-10 gap-y-2'>
+            <div className='text-xl'> {phone} </div>
+            <div className='capitalize'>{`${results?.carrier} | ${results?.line_type}`}</div>
+            {results?.location && (
+              <div className='flex items-center'>
+                <div>
+                  <Location className='w-6 h-6 mr-4' />
+                </div>
+                <div>{results?.location}</div>
               </div>
-              <div>{results?.location}</div>
-            </div>
-          )}
-        </div>
+            )}
+          </div>
+        </Skeleton>
       </div>
     </div>
   );
