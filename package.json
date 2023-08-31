@@ -1,0 +1,35 @@
+{
+  "name": "maroc-operator",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3040",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.3.1",
+    "@types/node": "^20.5.6",
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7",
+    "autoprefixer": "^10.4.15",
+    "axios": "^1.5.0",
+    "classnames": "^2.3.2",
+    "eslint": "^8.48.0",
+    "eslint-config-next": "^13.4.19",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "framer-motion": "^10.16.2",
+    "next": "^13.4.19",
+    "next-intl": "^2.20.0",
+    "postcss": "^8.4.28",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.45.4",
+    "react-loader-spinner": "^5.4.5",
+    "react-loading-skeleton": "^3.3.1",
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5.2.2",
+    "yup": "^1.2.0"
+  }
+}
