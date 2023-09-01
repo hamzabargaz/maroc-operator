@@ -588,7 +588,7 @@ export const carrierPrefixes = [
   { prefix: "0547", carrierCode: "INW", line_type: "mobile", location: "" },
   { prefix: "0550", carrierCode: "INW", line_type: "mobile", location: "" },
   { prefix: "0553", carrierCode: "INW", line_type: "mobile", location: "" },
-  { prefix: "0600", carrierCode: "INW", line_type: "mobile", location: "" },
+  { prefix: "060", carrierCode: "INW", line_type: "mobile", location: "" },
   { prefix: "0626", carrierCode: "INW", line_type: "mobile", location: "" },
   { prefix: "0627", carrierCode: "INW", line_type: "mobile", location: "" },
   { prefix: "0629", carrierCode: "INW", line_type: "mobile", location: "" },

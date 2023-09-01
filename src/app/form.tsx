@@ -15,9 +15,9 @@ import { Input } from "@/components/ui/input";
 import { IAMlogo, INWIlogo, ORANGElogo } from "@/assets/images";
 import { Location } from "@/assets/icons";
 import Image from "next/image";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { isEmpty } from "ramda";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Separator } from "@/components/ui/separator";
 
 type Props = {};
 
@@ -73,7 +73,7 @@ export default function FormDetector({}: Props) {
   return (
     <Form {...formProps}>
       <form
-        className='flex flex-1 flex-col mt-20 w-full justify-center items-center'
+        className='flex flex-col mt-20 max-w-4xl w-full justify-center items-center'
         onSubmit={formProps.handleSubmit(onSubmit)}
       >
         <div className='grid grid-cols-1 md:grid-cols-3 w-full md:w-1/2 text-left gap-4'>
@@ -102,7 +102,7 @@ export default function FormDetector({}: Props) {
             )}
           />
           <Button className='h-12 w-full' type='submit'>
-            Submit
+            Detect
           </Button>
         </div>
         <div className='flex flex-col w-1/2 mt-10 items-start justify-center text-left'>
@@ -123,13 +123,10 @@ const Result = ({ results }: any) => {
   const phone = results?.phone?.replace("0", "+212 ");
 
   return (
-    <div className='flex flex-col items-center justify-center w-full mt-10'>
-      <div className='flex items-center w-1/2 gap-4'>
-        <div className='w-1/3 grayscale'>
-          <AspectRatio
-            className='mr-4 w-32 h-32 rounded-full flex items-center justify-center p-4'
-            ratio={16 / 16}
-          >
+    <div className='flex flex-col items-center justify-center w-full border rounded-lg p-4 mt-10'>
+      <div className='grid grid-cols-3 gap-4'>
+        <div className='grayscale'>
+          <div className='mr-4 w-32 h-32 rounded-full border flex items-center justify-center p-4'>
             <Skeleton
               className='object-cover w-32 h-32 rounded-full'
               cond={isEmpty(carrierLogo[results?.code])}
@@ -140,26 +137,32 @@ const Result = ({ results }: any) => {
                 className='object-cover'
               />
             </Skeleton>
-          </AspectRatio>
+          </div>
         </div>
         <Skeleton
           count={3}
-          className='flex-1 mb-4 w-64 h-6'
+          className='mb-4 w-64 h-6'
           cond={isEmpty(results?.carrier)}
         >
-          <div className='flex flex-col text-xl whitespace-nowrap flex-1 w-2/3 pl-10 gap-y-2'>
-            <div className='text-xl'> {phone} </div>
-            <div className='capitalize'>{`${results?.carrier} | ${results?.line_type}`}</div>
-            {results?.location && (
-              <div className='flex items-center'>
-                <div>
-                  <Location className='w-6 h-6 mr-4' />
-                </div>
-                <div>{results?.location}</div>
-              </div>
-            )}
+          <div className='col-span-2 flex flex-col justify-center text-xl gap-y-2'>
+            <div className='text-xl'>{phone}</div>
+            <div className='capitalize font-light'>
+              {`${results?.carrier} | ${results?.line_type}`}
+            </div>
           </div>
         </Skeleton>
+        {results?.location && (
+          <>
+            <Separator className='col-span-3 my-3' />
+
+            <div className='flex items-center w-full col-span-3 pb-4'>
+              <div>
+                <Location className='w-6 h-6 mr-4 text-black dark:text-white' />
+              </div>
+              <div>{results?.location}</div>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

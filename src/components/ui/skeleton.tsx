@@ -16,7 +16,7 @@ function Skeleton({
   ...props
 }: Props) {
   return (
-    <div>
+    <>
       {}
       {cond
         ? times(
@@ -30,7 +30,7 @@ function Skeleton({
             count
           )
         : children}
-    </div>
+    </>
   );
 }
 
