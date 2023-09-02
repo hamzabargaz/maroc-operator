@@ -8,7 +8,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 
 export function generateStaticParams() {
-  return [{ locale: "en" }, { locale: "de" }];
+  return [{ locale: "en" }, { locale: "fr" }, { locale: "ar" }];
 }
 
 const inter = Inter({ subsets: ["latin"] });
@@ -23,18 +23,18 @@ export const metadata: Metadata = {
       rel: "icon",
       type: "image/png",
       sizes: "32x32",
-      url: "../favicon/favicon-32x32.png",
+      url: "./favicon/favicon-32x32.png",
     },
     {
       rel: "icon",
       type: "image/png",
       sizes: "16x16",
-      url: "../favicon/favicon-16x16.png",
+      url: "./favicon/favicon-16x16.png",
     },
     {
       rel: "apple-touch-icon",
       sizes: "180x180",
-      url: "../favicon/apple-touch-icon.png",
+      url: "./favicon/apple-touch-icon.png",
     },
   ],
   openGraph: {
@@ -83,13 +83,12 @@ export default async function RootLayout({
     notFound();
   }
   return (
-    <html lang={locale}>
-      <body
-        className={inter.className}
-        style={{
-          direction: locale === "ar" ? "rtl" : "ltr",
-        }}
-      >
+    <html
+      suppressHydrationWarning={true}
+      lang={locale}
+      dir={locale === "ar" ? "rtl" : "ltr"}
+    >
+      <body className={inter.className}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
             <Menu />

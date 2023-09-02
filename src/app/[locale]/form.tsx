@@ -108,7 +108,7 @@ export default function FormDetector({}: Props) {
             <Text value='detect' />
           </Button>
         </div>
-        <div className='flex flex-col w-1/2 mt-10 items-start justify-center text-left'>
+        <div className='flex flex-col w-full md:w-1/2  mt-10 items-start justify-center text-left'>
           {!isEmpty(results) && <Result results={results} />}
         </div>
       </form>
@@ -128,7 +128,7 @@ const Result = ({ results }: any) => {
 
   return (
     <div className='flex flex-col items-center justify-center w-full border rounded-lg p-4 mt-10'>
-      <div className='grid grid-cols-3 gap-4'>
+      <div className='grid grid-col-1 md:grid-cols-3 content-center gap-4'>
         <div className='grayscale'>
           <div className='mr-4 w-32 h-32 rounded-full border flex items-center justify-center p-4'>
             <Skeleton
@@ -149,7 +149,9 @@ const Result = ({ results }: any) => {
           cond={isEmpty(results?.carrier)}
         >
           <div className='col-span-2 flex flex-col justify-center text-xl gap-y-2'>
-            <div className='text-xl'>{phone}</div>
+            <div style={{ direction: "ltr" }} className='text-xl'>
+              {phone}
+            </div>
             <div className='capitalize font-light'>
               {`${t(results?.code)} | ${t(results?.line_type)}`}
             </div>
@@ -159,7 +161,10 @@ const Result = ({ results }: any) => {
           <>
             <Separator className='col-span-3 my-3' />
 
-            <div className='flex items-center w-full col-span-3 pb-4'>
+            <div
+              style={{ direction: "ltr" }}
+              className='flex items-center w-full col-span-3 pb-4'
+            >
               <div>
                 <Location className='w-6 h-6 mr-4 text-black dark:text-white' />
               </div>
