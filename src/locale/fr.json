@@ -1,0 +1,22 @@
+{
+  "Index": {
+    "en": "Anglais",
+    "fr": "Français",
+    "ar": "Arabe",
+    "light": "Clair",
+    "dark": "Sombre",
+    "system": "Système",
+    "findWhichPhoneOperator": "Trouver l'opérateur téléphonique au Maroc",
+    "discoverMobileOperator": "Découvrir les entreprises d'opérateurs mobiles et les zones de lignes fixes",
+    "enterPhoneNumber": "Entrez un numéro de téléphone",
+    "detect": "Détecter",
+    "mobile": "Mobile",
+    "landline": "Ligne fixe",
+    "IAM": "Maroc Telecom",
+    "INW": "Inwi",
+    "ORA": "Orange",
+    "inValidPhoneNumber": "Numéro de téléphone invalide",
+    "carrierNotFound": "Opérateur non trouvé",
+    "pleasePhoneNumberRequired": "Veuillez entrer un numéro de téléphone"
+  }
+}

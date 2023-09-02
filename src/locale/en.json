@@ -1,0 +1,22 @@
+{
+  "Index": {
+    "en": "English",
+    "fr": "French",
+    "ar": "Arabic",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "findWhichPhoneOperator": "Find Which Phone Operator in Morocco",
+    "discoverMobileOperator": "Discover Mobile Operator Companies and Landline Zones",
+    "enterPhoneNumber": "Enter a phone number",
+    "detect": "Detect",
+    "mobile": "Mobile",
+    "landline": "Landline",
+    "IAM": "Maroc Telecom",
+    "INW": "Inwi",
+    "ORA": "Orange",
+    "inValidPhoneNumber": "Invalid phone number",
+    "carrierNotFound": "Carrier not found",
+    "pleasePhoneNumberRequired": "Please enter a phone number"
+  }
+}

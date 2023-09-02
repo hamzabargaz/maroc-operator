@@ -4,6 +4,13 @@ import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import Menu from "@/components/menu";
 
+import { NextIntlClientProvider } from "next-intl";
+import { notFound } from "next/navigation";
+
+export function generateStaticParams() {
+  return [{ locale: "en" }, { locale: "de" }];
+}
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -16,18 +23,18 @@ export const metadata: Metadata = {
       rel: "icon",
       type: "image/png",
       sizes: "32x32",
-      url: "./favicon/favicon-32x32.png",
+      url: "../favicon/favicon-32x32.png",
     },
     {
       rel: "icon",
       type: "image/png",
       sizes: "16x16",
-      url: "/favicon/favicon-16x16.png",
+      url: "../favicon/favicon-16x16.png",
     },
     {
       rel: "apple-touch-icon",
       sizes: "180x180",
-      url: "/favicon/apple-touch-icon.png",
+      url: "../favicon/apple-touch-icon.png",
     },
   ],
   openGraph: {
@@ -58,18 +65,37 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
+type RootLayoutProps = {
   children: React.ReactNode;
-}) {
+  params: {
+    locale: string;
+  };
+};
+
+export default async function RootLayout({
+  children,
+  params: { locale },
+}: RootLayoutProps) {
+  let messages;
+  try {
+    messages = (await import(`./../../locale/${locale}.json`)).default;
+  } catch (error) {
+    notFound();
+  }
   return (
-    <html lang='en'>
-      <body className={inter.className}>
-        <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
-          <Menu />
-          {children}
-        </ThemeProvider>
+    <html lang={locale}>
+      <body
+        className={inter.className}
+        style={{
+          direction: locale === "ar" ? "rtl" : "ltr",
+        }}
+      >
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
+            <Menu />
+            {children}
+          </ThemeProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

@@ -7,7 +7,7 @@ export async function POST(request: Request) {
 
   if (typeof phoneNumber !== "string") {
     return NextResponse.json(
-      { message: "Invalid phone number" },
+      { message: "inValidPhoneNumber" },
       { status: 400 }
     );
   }
@@ -17,7 +17,7 @@ export async function POST(request: Request) {
   );
 
   if (!matchingPrefix) {
-    return NextResponse.json({ message: "Carrier not found" }, { status: 400 });
+    return NextResponse.json({ message: "carrierNotFound" }, { status: 400 });
   }
 
   const matchingCarrier = carriers.find(
@@ -25,7 +25,7 @@ export async function POST(request: Request) {
   );
 
   if (!matchingCarrier) {
-    return NextResponse.json({ message: "Carrier not found" }, { status: 400 });
+    return NextResponse.json({ message: "carrierNotFound" }, { status: 400 });
   }
 
   const response = {

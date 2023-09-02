@@ -18,6 +18,8 @@ import Image from "next/image";
 import { isEmpty } from "ramda";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Separator } from "@/components/ui/separator";
+import { Text } from "@/components/ui/text";
+import { useTranslations } from "next-intl";
 
 type Props = {};
 
@@ -32,6 +34,7 @@ const schema = yup.object().shape({
 });
 
 export default function FormDetector({}: Props) {
+  const t = useTranslations("Index");
   const formProps = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
@@ -44,7 +47,7 @@ export default function FormDetector({}: Props) {
     if (!data.phoneNumber) {
       return formProps.setError("phoneNumber", {
         type: "manual",
-        message: "please Phone number is required",
+        message: t("pleasePhoneNumberRequired"),
       });
     }
 
@@ -64,7 +67,7 @@ export default function FormDetector({}: Props) {
     } catch (err: any) {
       return formProps.setError("phoneNumber", {
         type: "manual",
-        message: err.message,
+        message: t(err.message),
       });
     }
   };
@@ -85,7 +88,7 @@ export default function FormDetector({}: Props) {
                 <FormControl>
                   <Input
                     className='h-full text-lg'
-                    placeholder='Enter phone number'
+                    placeholder={t("enterPhoneNumber")}
                     type='number'
                     value={field.value}
                     onChange={(e) => {
@@ -102,7 +105,7 @@ export default function FormDetector({}: Props) {
             )}
           />
           <Button className='h-12 w-full' type='submit'>
-            Detect
+            <Text value='detect' />
           </Button>
         </div>
         <div className='flex flex-col w-1/2 mt-10 items-start justify-center text-left'>
@@ -114,6 +117,7 @@ export default function FormDetector({}: Props) {
 }
 
 const Result = ({ results }: any) => {
+  const t = useTranslations("Index");
   const carrierLogo: any = {
     IAM: IAMlogo,
     INW: INWIlogo,
@@ -147,7 +151,7 @@ const Result = ({ results }: any) => {
           <div className='col-span-2 flex flex-col justify-center text-xl gap-y-2'>
             <div className='text-xl'>{phone}</div>
             <div className='capitalize font-light'>
-              {`${results?.carrier} | ${results?.line_type}`}
+              {`${t(results?.code)} | ${t(results?.line_type)}`}
             </div>
           </div>
         </Skeleton>

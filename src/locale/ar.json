@@ -1,0 +1,22 @@
+{
+  "Index": {
+    "en": "إنجليزي",
+    "fr": "فرنسي",
+    "ar": "عربي",
+    "light": "فاتح",
+    "dark": "داكن",
+    "system": "النظام",
+    "findWhichPhoneOperator": "العثور على مشغل الهاتف في المغرب",
+    "discoverMobileOperator": "اكتشاف شركات مشغلي الهواتف المحمولة ومناطق الهواتف الأرضية",
+    "enterPhoneNumber": "أدخل رقم هاتف",
+    "detect": "اكتشاف",
+    "mobile": "هاتف محمول",
+    "landline": "هاتف أرضي",
+    "IAM": "إتصالات المغرب",
+    "INW": "إنوي",
+    "ORA": "أورانج",
+    "inValidPhoneNumber": "رقم هاتف غير صالح",
+    "carrierNotFound": "المشغل غير موجود",
+    "pleasePhoneNumberRequired": "يرجى إدخال رقم هاتف"
+  }
+}

@@ -3,6 +3,7 @@ import React from "react";
 import { ModeToggle } from "./mode-toggle";
 import { Logo } from "@/assets/icons";
 import Image from "next/image";
+import LangSwitch from "./lang-switch";
 
 type Props = {};
 
@@ -23,7 +24,10 @@ export default function Menu({}: Props) {
           Contact
         </a> */}
       </nav>
-      <ModeToggle />
+      <div className='flex gap-x-2'>
+        <ModeToggle />
+        <LangSwitch />
+      </div>
     </header>
   );
 }
