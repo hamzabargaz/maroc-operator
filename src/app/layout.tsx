@@ -7,8 +7,9 @@ import Menu from "@/components/menu";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Maroc Operator",
-  description: "Maroc Operator - Detect your operator in Morocco",
+  title: "Discover Your Phone Operator in Morocco | Maroc Operateur",
+  description:
+    "Looking for your phone operator in Morocco? Maroc Operateur makes it easy. Find your mobile operator or landline zone with our quick, accurate lookup tool.",
   icons: [
     {
       rel: "icon",

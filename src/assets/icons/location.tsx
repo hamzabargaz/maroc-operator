@@ -10,7 +10,7 @@ export default function Location({ className, ...props }: Props) {
     <svg
       version='1.0'
       viewBox='0 0 64 64'
-      enable-background='new 0 0 64 64'
+      enableBackground='new 0 0 64 64'
       className={className}
       {...props}
     >
