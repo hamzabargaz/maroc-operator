@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import Menu from "@/components/menu";
 import metadata from "./metadata";
+import GoogleAnalytics from "@/scripts/GoogleAnalytics";
 
 export function generateStaticParams() {
   return [{ locale: "en" }, { locale: "fr" }, { locale: "ar" }];
@@ -47,6 +48,7 @@ export default async function RootLayout({
       dir={locale === "ar" ? "rtl" : "ltr"}
     >
       <body className={inter.className}>
+        <GoogleAnalytics />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
             <Menu />
