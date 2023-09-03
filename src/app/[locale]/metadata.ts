@@ -4,6 +4,10 @@ export default function metadata(t: any, locale: string) {
     title: t("title"),
     description: t("description"),
     keywords: t("keywords"),
+    themeColor: [
+      { media: "(prefers-color-scheme: light)", color: "cyan" },
+      { media: "(prefers-color-scheme: dark)", color: "black" },
+    ],
     // icons: [
     //   {
     //     rel: "icon",

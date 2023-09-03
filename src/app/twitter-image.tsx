@@ -24,7 +24,7 @@ export default async function Image() {
     ),
     // ImageResponse options
     {
-      // For convenience, we can re-use the exported opengraph-image
+      // For convenience, we can re-use the exported twitter-image
       // size config to also set the ImageResponse's width and height.
       ...size,
     }
