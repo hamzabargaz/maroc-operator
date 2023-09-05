@@ -104,7 +104,7 @@ export default function FormDetector({}: Props) {
             <Text value='detect' />
           </Button>
         </div>
-        <div className='flex flex-col w-full md:w-1/2  mt-10 items-start justify-center text-left'>
+        <div className='flex flex-col w-full md:w-1/2  mt-10 pb-10 items-start justify-center text-left'>
           {!isEmpty(results) && <Result results={results} />}
         </div>
       </form>
