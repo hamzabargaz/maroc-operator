@@ -16,6 +16,8 @@ import { isEmpty } from "ramda";
 import { Text } from "@/components/ui/text";
 import { useTranslations } from "next-intl";
 import Result from "./result";
+import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 type Props = {};
 
@@ -31,6 +33,7 @@ const schema = yup.object().shape({
 
 export default function FormDetector({}: Props) {
   const t = useTranslations("Index");
+  const router = useRouter();
   const formProps = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
@@ -59,6 +62,7 @@ export default function FormDetector({}: Props) {
         throw new Error(json.message);
       }
       formProps.reset();
+      router.push("/#results");
       return formProps.setValue("results", json.body);
     } catch (err: any) {
       return formProps.setError("phoneNumber", {
@@ -104,8 +108,20 @@ export default function FormDetector({}: Props) {
             <Text value='detect' />
           </Button>
         </div>
-        <div className='flex flex-col w-full md:w-1/2  mt-10 pb-10 items-start justify-center text-left'>
-          {!isEmpty(results) && <Result results={results} />}
+        <div
+          id='results'
+          className='flex flex-col w-full md:w-1/2  mt-10 pb-10 items-start justify-center text-left'
+        >
+          {!isEmpty(results) && (
+            <motion.div
+              initial={{ opacity: 0, y: -100 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -100 }}
+              transition={{ delay: 0.35, ease: "easeInOut", duration: 0.35 }}
+            >
+              <Result results={results} />
+            </motion.div>
+          )}
         </div>
       </form>
     </Form>
