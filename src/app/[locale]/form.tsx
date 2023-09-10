@@ -17,7 +17,7 @@ import { Text } from "@/components/ui/text";
 import { useTranslations } from "next-intl";
 import Result from "./result";
 import { motion } from "framer-motion";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next-intl/client";
 
 type Props = {};
 
