@@ -20,10 +20,10 @@ export default function Result({ results }: any) {
   return (
     <div className='flex flex-col items-center justify-center w-full border rounded-lg p-4 mt-10'>
       <div className='grid grid-col-1 md:grid-cols-3 content-center gap-4'>
-        <div className='grayscale'>
-          <div className='mr-4 w-32 h-32 rounded-full border flex items-center justify-center p-4'>
+        <div className='grayscale col-span-2 md:col-auto flex justify-center items-center'>
+          <div className='mr-4 w-32 h-32 rounded-full border flex items-center justify-center p-4 shrink-0'>
             <Skeleton
-              className='object-cover w-32 h-32 rounded-full'
+              className='object-cover w-32 h-32  rounded-full'
               cond={isEmpty(carrierLogo[results?.code])}
             >
               <Image
