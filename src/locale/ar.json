@@ -24,6 +24,8 @@
     "ORA": "أورانج",
     "inValidPhoneNumber": "رقم هاتف غير صالح",
     "carrierNotFound": "المشغل غير موجود",
-    "pleasePhoneNumberRequired": "يرجى إدخال رقم هاتف"
+    "pleasePhoneNumberRequired": "يرجى إدخال رقم هاتف",
+    "privacyPolicy": "سياسة الخصوصية",
+    "termsOfService": "شروط الخدمة"
   }
 }

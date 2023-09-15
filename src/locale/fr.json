@@ -24,6 +24,8 @@
     "ORA": "Orange",
     "inValidPhoneNumber": "Numéro de téléphone invalide",
     "carrierNotFound": "Opérateur non trouvé",
-    "pleasePhoneNumberRequired": "Veuillez entrer un numéro de téléphone"
+    "pleasePhoneNumberRequired": "Veuillez entrer un numéro de téléphone",
+    "privacyPolicy": "Politique de confidentialité",
+    "termsOfService": "Conditions d'utilisation"
   }
 }

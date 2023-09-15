@@ -6,6 +6,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Menu from "@/components/menu";
 import metadata from "./metadata";
 import GoogleAnalytics from "@/scripts/GoogleAnalytics";
+import Link from "next/link";
+import Footer from "@/components/footer";
 
 export function generateStaticParams() {
   return [{ locale: "en" }, { locale: "fr" }, { locale: "ar" }];
@@ -51,8 +53,13 @@ export default async function RootLayout({
         <GoogleAnalytics />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
-            <Menu />
-            {children}
+            <div className='flex flex-col h-screen justify-between'>
+              <div className=''>
+                <Menu />
+                {children}
+              </div>
+              <Footer />
+            </div>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
